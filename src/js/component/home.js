@@ -5,17 +5,15 @@ import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
 export function Home() {
-	const Anime = () => {
-		const [busqueda, setBusqueda] = useState("");
-		const [data, setData] = useState([]);
-		const [cargando, setCargando] = useState(false);
-		const buscar = e => {
-			e.preventDefault();
-			fetch(`https://api.jikan.moe/v3/search/anime?q=${busqueda}`)
-				.then(response => response.json())
-				.then(data => setData(data.resaults))
-				.catch(error => console.log(error));
-		};
+	const [busqueda, setBusqueda] = useState("");
+	const [data, setData] = useState([]);
+	const [cargando, setCargando] = useState(false);
+	const buscar = e => {
+		e.preventDefault();
+		fetch(`https://api.jikan.moe/v3/search/anime?q=${busqueda}`)
+			.then(response => response.json())
+			.then(data => setData(data.results))
+			.catch(error => console.log(error));
 	};
 
 	return (
